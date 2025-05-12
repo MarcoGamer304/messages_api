@@ -1,0 +1,22 @@
+import { DeleteMessagesUseCase } from "../domain/useCases/deleteMessagesUseCase";
+import { GetAllMessagesUseCase } from "../domain/useCases/getAllMessagesUseCase";
+import { GetMessagesUseCase } from "../domain/useCases/getMessagesUseCase";
+import { PutMessagesUseCase } from "../domain/useCases/putMessagesUseCase";
+import { SaveMessagesUseCase } from "../domain/useCases/saveMessagesUseCase";
+import { MessagesRepository } from "../repository/messageController";
+
+export class MessagesUseCasesController {
+  delete: DeleteMessagesUseCase;
+  get: GetMessagesUseCase;
+  save: SaveMessagesUseCase;
+  getAll: GetAllMessagesUseCase;
+  put: PutMessagesUseCase;
+
+  constructor(private repository: MessagesRepository) {
+    this.delete = new DeleteMessagesUseCase(repository);
+    this.get = new GetMessagesUseCase(repository);
+    this.save = new SaveMessagesUseCase(repository);
+    this.getAll = new GetAllMessagesUseCase(repository);
+    this.put = new PutMessagesUseCase(repository)
+  }
+}
