@@ -1,9 +1,9 @@
-import { IMessageServices } from "../domain/interfaces/IMessagesServices";
-import { IEndpointMessage } from "../domain/types/IEndpointMessage";
+import { IMessagesRepository } from "../domain/interfaces/IMessagesRepository";
+import { TEndpointMessage } from "../domain/types/TEndpointMessage";
 import { TMessage } from "../domain/types/TMessage";
 import { MessageService } from "../services/messageService";
 
-export class MessagesRepository implements IMessageServices {
+export class MessagesRepository implements IMessagesRepository {
   private static instance: MessagesRepository;
   private messageService = MessageService.getInstance();
 
@@ -14,23 +14,23 @@ export class MessagesRepository implements IMessageServices {
     return MessagesRepository.instance;
   }
 
-  async get(id: number): Promise<IEndpointMessage> {
+  get = async (id: number): Promise<TEndpointMessage> => {
     return await this.messageService.get(id);
-  }
+  };
 
-  async getByUser(id: number): Promise<IEndpointMessage[]> {
+  getByUser = async (id: number): Promise<TEndpointMessage[]> => {
     return await this.messageService.getByUser(id);
-  }
+  };
 
-  async save(data: TMessage): Promise<IEndpointMessage> {
+  save = async (data: TMessage): Promise<TEndpointMessage> => {
     return await this.messageService.save(data);
-  }
+  };
 
-  async delete(id: number): Promise<IEndpointMessage> {
+  delete = async (id: number): Promise<TEndpointMessage> => {
     return await this.messageService.delete(id);
-  }
+  };
 
-  async put(id: number, data: TMessage): Promise<IEndpointMessage> {
+  put = async (id: number, data: TMessage): Promise<TEndpointMessage> => {
     return await this.messageService.put(id, data);
-  }
+  };
 }

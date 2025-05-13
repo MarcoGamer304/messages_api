@@ -13,10 +13,10 @@ export class MessagesUseCasesController {
   put: PutMessagesUseCase;
 
   constructor(private repository: MessagesRepository) {
-    this.delete = new DeleteMessagesUseCase(repository);
-    this.get = new GetMessagesUseCase(repository);
-    this.save = new SaveMessagesUseCase(repository);
-    this.getAll = new GetAllMessagesUseCase(repository);
-    this.put = new PutMessagesUseCase(repository)
+    this.delete = new DeleteMessagesUseCase(this.repository);
+    this.get = new GetMessagesUseCase(this.repository);
+    this.save = new SaveMessagesUseCase(this.repository);
+    this.getAll = new GetAllMessagesUseCase(this.repository);
+    this.put = new PutMessagesUseCase(this.repository)
   }
 }

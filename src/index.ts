@@ -11,7 +11,7 @@ import { config } from "./utilities/config";
 import { Server } from "socket.io";
 import { sequelize } from "./database/connection";
 import { limiter } from "./utilities/limiter";
-import messagesRouter from "./entities/Messages/routes/messagesRoutes";
+import router from "./routes/routes";
 
 dotenv.config();
 
@@ -35,7 +35,10 @@ app.use(limiter);
 
 sequelize
   .authenticate()
-  .then(() => console.log("successfully connected"))
+  .then(() => {
+    console.log("successfully connected");
+    return sequelize.sync({ alter: true });
+  })
   .catch((err) => console.error("err:", err));
 
 io.on("connection", (socket) => {
@@ -47,7 +50,7 @@ io.on("connection", (socket) => {
   });
 });
 
-app.use("/api/messages", messagesRouter);
+app.use("/api", router);
 
 app.get("/", (req, res) => {
   res.send("api rest wsocket");

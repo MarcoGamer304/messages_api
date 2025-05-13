@@ -1,7 +1,7 @@
 import { TEndpointMessage } from "../types/TEndpointMessage";
 import { TMessage } from "../types/TMessage";
 
-export interface IMessageServices {
+export interface IMessagesRepository {
   get: (id: number) => Promise<TEndpointMessage>;
   getByUser: (id: number) => Promise<TEndpointMessage[]>;
   save: (data: TMessage) => Promise<TEndpointMessage>;

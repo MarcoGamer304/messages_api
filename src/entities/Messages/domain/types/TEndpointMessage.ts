@@ -1,4 +1,4 @@
-export type IEndpointMessage = {
+export type TEndpointMessage = {
   id: number;
   sender_id: string;
   recipient_id: string;
