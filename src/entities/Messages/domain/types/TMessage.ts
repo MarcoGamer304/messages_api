@@ -1,6 +1,6 @@
 export type TMessage = {
-  sender_id: string;
-  recipient_id: string;
+  sender_id: number;
+  recipient_id: number;
   content: string;
   status?: string;
 };

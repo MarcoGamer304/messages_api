@@ -6,14 +6,15 @@ import {
   CreationOptional,
 } from "sequelize";
 import { sequelize } from "../../../../database/connection";
+import User from "../../../User/domain/models/UserModel";
 
 class Message extends Model<
   InferAttributes<Message>,
   InferCreationAttributes<Message>
 > {
   declare id: CreationOptional<number>;
-  declare sender_id: string;
-  declare recipient_id: string;
+  declare sender_id: number;
+  declare recipient_id: number;
   declare content: string;
   declare status: CreationOptional<string>;
   declare createdAt: CreationOptional<Date>;
@@ -28,11 +29,11 @@ Message.init(
       primaryKey: true,
     },
     sender_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
     },
     recipient_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
     },
     content: {
@@ -61,5 +62,8 @@ Message.init(
     timestamps: true,
   }
 );
+
+Message.belongsTo(User, { as: 'sender', foreignKey: 'sender_id' });
+Message.belongsTo(User, { as: 'recipient', foreignKey: 'recipient_id' });
 
 export default Message;

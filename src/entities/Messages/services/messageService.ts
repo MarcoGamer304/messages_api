@@ -2,6 +2,7 @@ import Message from "../domain/models/MessageModel";
 import { IMessageServices } from "../domain/interfaces/IMessagesServices";
 import { TEndpointMessage } from "../domain/types/TEndpointMessage";
 import { TMessage } from "../domain/types/TMessage";
+import User from "../../User/domain/models/UserModel";
 
 export class MessageService implements IMessageServices {
   private static instance: MessageService;
@@ -26,6 +27,9 @@ export class MessageService implements IMessageServices {
       where: {
         sender_id: id,
       },
+      include: [
+        { model: User, as: "recipient", attributes: ["id", "username", "email", "online", "last_seen"] },
+      ],
     });
     if (message.length === 0) {
       throw new Error("user dont have messages");
