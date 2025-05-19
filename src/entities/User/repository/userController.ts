@@ -4,7 +4,7 @@ import { UserService } from "../services/userService";
 
 export class UserRepository implements IUserRepository {
   private static instance: UserRepository;
-  private userService = UserService.getInstance();
+  private readonly userService = UserService.getInstance();
 
   public static getInstance(): UserRepository {
     if (!UserRepository.instance) {

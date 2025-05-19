@@ -13,8 +13,7 @@ export class UserController implements IUserController {
     return UserController.instance;
   }
 
-  private userRepository = UserRepository.getInstance();
-  private useCases = new GetUserUseCase(this.userRepository);
+  private readonly useCases = new GetUserUseCase(UserRepository.getInstance());
 
   get = async (req: Request, res: Response) => {
     try {

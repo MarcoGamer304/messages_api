@@ -5,7 +5,6 @@ import { MessageService } from "../services/messageService";
 
 export class MessagesRepository implements IMessagesRepository {
   private static instance: MessagesRepository;
-  private messageService = MessageService.getInstance();
 
   public static getInstance(): MessagesRepository {
     if (!MessagesRepository.instance) {
@@ -14,6 +13,8 @@ export class MessagesRepository implements IMessagesRepository {
     return MessagesRepository.instance;
   }
 
+  private readonly messageService = MessageService.getInstance();
+  
   get = async (id: number): Promise<TEndpointMessage> => {
     return await this.messageService.get(id);
   };

@@ -13,8 +13,7 @@ export class MessageController implements IMessagesController {
     return MessageController.instance;
   }
 
-  private messagesRepository = MessagesRepository.getInstance();
-  private useCases = new MessagesUseCasesController(this.messagesRepository);
+  private readonly useCases = new MessagesUseCasesController(MessagesRepository.getInstance());
 
   get = async (req: Request, res: Response) => {
     try {

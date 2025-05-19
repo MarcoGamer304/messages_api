@@ -13,8 +13,9 @@ export class TeamsController implements ITeamsController {
     return TeamsController.instance;
   }
 
-  private teamsRepository = TeamsRepository.getInstance();
-  private useCases = new TeamsUseCasesController(this.teamsRepository);
+  private readonly useCases = new TeamsUseCasesController(
+    TeamsRepository.getInstance()
+  );
 
   get = async (req: Request, res: Response) => {
     try {
@@ -27,7 +28,9 @@ export class TeamsController implements ITeamsController {
 
   getByUser = async (req: Request, res: Response) => {
     try {
-      const result = await this.useCases.getByUser.execute(Number(req.params.id));
+      const result = await this.useCases.getByUser.execute(
+        Number(req.params.id)
+      );
       res.status(200).json(result);
     } catch (error: any) {
       res.status(400).json({ error: error.message });

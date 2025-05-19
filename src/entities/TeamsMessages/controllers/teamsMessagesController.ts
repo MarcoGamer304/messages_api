@@ -13,9 +13,8 @@ export class TeamsMessagesController implements ITeamsMessagesController {
     return TeamsMessagesController.instance;
   }
 
-  private teamsMessagesRepository = TeamsMessagesRepository.getInstance();
-  private useCases = new TeamsMessagesUseCasesController(
-    this.teamsMessagesRepository
+  private readonly useCases = new TeamsMessagesUseCasesController(
+    TeamsMessagesRepository.getInstance()
   );
 
   get = async (req: Request, res: Response) => {

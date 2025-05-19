@@ -9,6 +9,8 @@ services:
       MYSQL_DATABASE: $DATABASE
     ports:
       - "$DB_PORT:$DB_PORT"
+    volumes:
+      - mysql_data:/var/lib/mysql
   app: 
     build: .
     depends_on:
@@ -17,3 +19,6 @@ services:
       - mysql
     ports:
       - "$PORT:$PORT"
+      
+volumes:
+  mysql_data:
