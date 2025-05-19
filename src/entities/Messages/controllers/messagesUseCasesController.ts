@@ -3,7 +3,7 @@ import { GetAllMessagesUseCase } from "../domain/useCases/getAllMessagesUseCase"
 import { GetMessagesUseCase } from "../domain/useCases/getMessagesUseCase";
 import { PutMessagesUseCase } from "../domain/useCases/putMessagesUseCase";
 import { SaveMessagesUseCase } from "../domain/useCases/saveMessagesUseCase";
-import { MessagesRepository } from "../repository/messageController";
+import { MessagesRepository } from "../repository/messagesRepository";
 
 export class MessagesUseCasesController {
   delete: DeleteMessagesUseCase;

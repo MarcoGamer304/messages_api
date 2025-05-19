@@ -1,5 +1,5 @@
 import { IMessagesController } from "../domain/interfaces/IMessagesController";
-import { MessagesRepository } from "../repository/messageController";
+import { MessagesRepository } from "../repository/messagesRepository";
 import { MessagesUseCasesController } from "./messagesUseCasesController";
 import { Request, Response } from "express";
 

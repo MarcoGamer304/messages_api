@@ -2,7 +2,7 @@ import { Server } from "socket.io";
 import { TeamsMessagesUseCasesController } from "../entities/TeamsMessages/controllers/teamsMessagesUseCasesController";
 import { TeamsMessagesRepository } from "../entities/TeamsMessages/repository/TeamsMessagesRepository";
 import { MessagesUseCasesController } from "../entities/Messages/controllers/messagesUseCasesController";
-import { MessagesRepository } from "../entities/Messages/repository/messageController";
+import { MessagesRepository } from "../entities/Messages/repository/messagesRepository";
 
 const useCasesTeams = new TeamsMessagesUseCasesController(
   TeamsMessagesRepository.getInstance()

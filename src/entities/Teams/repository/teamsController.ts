@@ -5,7 +5,7 @@ import { TeamsService } from "../services/TeamsService";
 
 export class TeamsRepository implements ITeamsRepository {
   private static instance: TeamsRepository;
-  private teamsService = TeamsService.getInstance();
+  private readonly teamsService = TeamsService.getInstance();
 
   public static getInstance(): TeamsRepository {
     if (!TeamsRepository.instance) {

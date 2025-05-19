@@ -1,9 +1,8 @@
-import { where } from "sequelize";
 import { ITeamsService } from "../domain/interfaces/ITeamsService";
 import Teams from "../domain/models/TeamsModel";
 import { TEndpointTeams } from "../domain/types/TEndpointTeams";
 import { TTeams } from "../domain/types/TTeams";
-import { Op, literal } from "sequelize";
+import { literal } from "sequelize";
 
 export class TeamsService implements ITeamsService {
   private static instance: TeamsService;
