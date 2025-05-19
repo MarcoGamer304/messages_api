@@ -1,7 +1,7 @@
 import { UserRepository } from "../../repository/userController";
 
 export class GetUserUseCase {
-  constructor(private userRepository: UserRepository) {}
+  constructor(private readonly userRepository: UserRepository) {}
 
   async execute(id: number) {
     return await this.userRepository.get(id);

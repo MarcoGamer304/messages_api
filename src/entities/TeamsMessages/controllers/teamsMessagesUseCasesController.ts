@@ -14,7 +14,7 @@ export class TeamsMessagesUseCasesController {
   getByUser: GetByUserTeamsMessagesUseCase;
   put: PutTeamsMessagesUseCase;
 
-  constructor(private repository: TeamsMessagesRepository) {
+  constructor(private readonly repository: TeamsMessagesRepository) {
     this.delete = new DeleteTeamsMessagesUseCase(this.repository);
     this.get = new GetTeamsMessagesUseCase(this.repository);
     this.getByUser = new GetByUserTeamsMessagesUseCase(this.repository);

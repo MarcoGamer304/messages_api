@@ -14,7 +14,7 @@ export class TeamsUseCasesController {
   getByUser: GetByUserTeamsUseCase
   put: PutTeamsUseCase;
 
-  constructor(private repository: TeamsRepository) {
+  constructor(private readonly repository: TeamsRepository) {
     this.delete = new DeleteTeamsUseCase(this.repository);
     this.get = new GetTeamsUseCase(this.repository);
     this.getByUser = new GetByUserTeamsUseCase(this.repository)

@@ -12,7 +12,7 @@ export class MessagesUseCasesController {
   getAll: GetAllMessagesUseCase;
   put: PutMessagesUseCase;
 
-  constructor(private repository: MessagesRepository) {
+  constructor(private readonly repository: MessagesRepository) {
     this.delete = new DeleteMessagesUseCase(this.repository);
     this.get = new GetMessagesUseCase(this.repository);
     this.save = new SaveMessagesUseCase(this.repository);
