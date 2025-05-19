@@ -7,6 +7,7 @@ export const sequelize = new Sequelize(
   config.PASSWORD,
   {
     host: config.HOST,
+    port: Number(config.DB_PORT),
     dialect: "mysql",
     logging: console.log,
     pool: {

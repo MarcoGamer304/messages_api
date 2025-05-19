@@ -11,5 +11,6 @@ export const config: TConfig = {
   NODE_ENV: env.NODE_ENV,
   CORS_ORIGIN: env.CORS_ORIGIN,
   PORT: env.PORT,
-  URL: env.URL
+  URL: env.URL,
+  DB_PORT: env.DB_PORT,
 };

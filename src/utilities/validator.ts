@@ -13,7 +13,8 @@ const envSchema = z.object({
   NODE_ENV: z.string(),
   CORS_ORIGIN: z.string(),
   PORT: z.string(),
-  URL: z.string()
+  URL: z.string(),
+  DB_PORT: z.string(),
 });
 
 export const env = envSchema.parse(process.env);

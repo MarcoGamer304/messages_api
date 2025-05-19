@@ -9,4 +9,5 @@ export type TConfig = {
   CORS_ORIGIN: string;
   PORT: string;
   URL: string;
+  DB_PORT: string;
 };
