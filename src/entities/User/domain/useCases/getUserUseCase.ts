@@ -1,4 +1,4 @@
-import { UserRepository } from "../../repository/userController";
+import { UserRepository } from "../../repository/userRepository";
 
 export class GetUserUseCase {
   constructor(private readonly userRepository: UserRepository) {}

@@ -1,5 +1,5 @@
 import express from "express";
-import { UserController } from "../controllers/messagesController";
+import { UserController } from "../controllers/userController";
 
 const userController = UserController.getInstance();
 

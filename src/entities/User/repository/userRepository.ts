@@ -13,7 +13,7 @@ export class UserRepository implements IUserRepository {
     return UserRepository.instance;
   }
 
-  get = async (id: number): Promise<TUserEndpoint[]> => {
+  get = async (id: number): Promise<TUserEndpoint> => {
     return await this.userService.get(id);
   };
 }

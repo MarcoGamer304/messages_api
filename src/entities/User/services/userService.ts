@@ -12,8 +12,11 @@ export class UserService implements IUserServices {
     return UserService.instance;
   }
 
-  get = async (id: number): Promise<TUserEndpoint[]> => {
-    const users = await User.findAll();
-    return users;
+  get = async (id: number): Promise<TUserEndpoint> => {
+    const user = await User.findByPk(id);
+    if (!user) {
+      throw new Error("user not found");
+    }
+    return user;
   };
 }
