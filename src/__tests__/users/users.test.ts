@@ -1,6 +1,7 @@
 import request from "supertest";
 import express from "express";
 import { UserController } from "../../entities/User/controllers/userController";
+import { wrap } from "../../middlewares/httpErrorCatch";
 
 describe("UserController Endpoints", () => {
   let app: express.Express;
@@ -34,13 +35,8 @@ describe("UserController Endpoints", () => {
   beforeAll(() => {
     app = express();
     app.use(express.json());
+    
     (controller as any).useCases = dummyUseCases;
-
-    const wrap = (fn: any) => (req: any, res: any) => {
-      fn(req, res).catch((e: Error) => {
-        res.status(404).json({ error: e.message });
-      });
-    };
 
     app.get("/api/users/:id", wrap(controller.get));
   });

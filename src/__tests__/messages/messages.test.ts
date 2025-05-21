@@ -1,6 +1,7 @@
 import request from "supertest";
 import express from "express";
 import { MessageController } from "../../entities/Messages/controllers/messagesController";
+import { wrap } from "../../middlewares/httpErrorCatch";
 
 describe("MessageController Endpoints", () => {
   let app: express.Express;
@@ -78,17 +79,8 @@ describe("MessageController Endpoints", () => {
     app.use(express.json());
     controller = MessageController.getInstance();
 
-    // Reemplazamos los useCases por nuestros mocks
     (controller as any).useCases = dummyUseCases;
 
-    // Middleware que captura errores y responde 404
-    const wrap = (fn: any) => (req: any, res: any) => {
-      fn(req, res).catch((e: Error) => {
-        res.status(404).json({ error: e.message });
-      });
-    };
-
-    // Registro rutas con manejo de errores
     app.get("/api/messages/:id", wrap(controller.get));
     app.get("/api/messages/:id/all", wrap(controller.getByUser));
     app.post("/api/messages", wrap(controller.save));
