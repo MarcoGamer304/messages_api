@@ -28,6 +28,7 @@ jobs:
         username: ${{ secrets.SERVER_USER }}
         key: ${{ secrets.SERVER_SSH_KEY }}
         script: |
+          mkdir -p ~/mi-api-express
           cd ~/mi-api-express
           docker-compose down
           docker-compose up --build -d
