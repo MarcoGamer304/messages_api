@@ -65,6 +65,23 @@ describe("TeamsController Endpoints", () => {
     updatedAt: "2025-05-20T16:57:25.000Z",
   };
 
+  const postExpectedResponseError = {
+    id: 2,
+    sender_id: 2,
+    recipient_id: 1,
+    content: "hola",
+    status: "sent",
+    createdAt: "2025-05-20T16:53:43.000Z",
+    updatedAt: "2025-05-20T16:53:43.000Z",
+    recipient: {
+      id: 1,
+      username: "juanp",
+      email: "juan.perez@example.com",
+      online: true,
+      last_seen: "2024-05-01T10:00:00.000Z",
+    },
+  };
+
   const notFoundError = new Error("teams not found");
 
   const dummyUseCases = {
@@ -86,9 +103,7 @@ describe("TeamsController Endpoints", () => {
       execute: jest.fn(() => Promise.resolve(getAllExpectedResponse)),
     },
     save: {
-      execute: jest.fn((data: any) =>
-        Promise.resolve({ id: 2, name: "New Team" })
-      ),
+      execute: jest.fn((data: any) => Promise.resolve(data)),
     },
     delete: {
       execute: jest.fn((id: number) =>
@@ -163,10 +178,12 @@ describe("TeamsController Endpoints", () => {
   });
 
   test("POST /teams debe guardar un nuevo equipo", async () => {
-    const teamData = { name: "New Team" };
+    const teamData = postExpectedResponseError;
     const response = await request(app).post("/api/teams").send(teamData);
+    console.log("response post", response.body);
+    console.log("response status", response.status);
     expect(response.status).toBe(200);
-    expect(response.body).toEqual({ id: 2, name: "New Team" });
+    expect(response.body).toEqual(postExpectedResponseError);
     expect(dummyUseCases.save.execute).toHaveBeenCalledWith(teamData);
   });
 
