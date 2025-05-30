@@ -9,15 +9,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: ⏬ Clonar repositorio
+    - name: Clonar repositorio
       uses: actions/checkout@v3
       
-    - name: 🔐 Iniciar sesión en Tailscale
+    - name: Iniciar sesión en Tailscale
       uses: tailscale/github-action@v2
       with:
         authkey: ${{ secrets.TAILSCALE_AUTH_KEY }}    
 
-    - name: 📦 Enviar archivos al servidor por SSH
+    - name: Enviar archivos al servidor por SSH
       uses: appleboy/scp-action@v0.1.4
       with:
         host: ${{ secrets.SERVER_HOST }}
@@ -26,7 +26,7 @@ jobs:
         source: "."
         target: "~/mi-api-express"
 
-    - name: 🚀 Ejecutar docker-compose en el servidor
+    - name: Ejecutar docker-compose en el servidor
       uses: appleboy/ssh-action@v0.1.10
       with:
         host: ${{ secrets.SERVER_HOST }}
