@@ -4,4 +4,4 @@ crear port
 ssh -R 0:localhost:22 serveo.net
 test
 sdf
-tailscale ip
+tailscale 
